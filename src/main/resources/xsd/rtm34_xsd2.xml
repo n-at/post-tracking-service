@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://www.russianpost.org/RTM/DataExchangeESPP/Data"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           version="1.0"
+           targetNamespace="http://www.russianpost.org/RTM/DataExchangeESPP/Data">
+
+    <xs:element name="Login" type="xs:string"/>
+
+    <xs:element name="Password" type="xs:string"/>
+
+    <xs:element name="PostalOrderEvent" type="tns:PostalOrderEvent"/>
+
+    <xs:element name="PostalOrderEventsForMaiOutput" type="tns:PostalOrderEventsForMaiOutput"/>
+
+    <xs:element name="PostalOrderEventsForMailError" type="tns:PostalOrderEventsForMailError"/>
+
+    <xs:element name="PostalOrderEventsForMailFault" type="tns:PostalOrderEventsForMailFault"/>
+
+    <xs:element name="PostalOrderEventsForMailInput" type="tns:PostalOrderEventsForMailInput"/>
+
+    <xs:complexType name="PostalOrderEvent">
+        <xs:sequence/>
+        <xs:attribute name="Number" type="xs:string"/>
+        <xs:attribute name="EventDateTime" type="xs:dateTime"/>
+        <xs:attribute name="EventType" type="xs:integer"/>
+        <xs:attribute name="EventName" type="xs:string"/>
+        <xs:attribute name="IndexTo" type="xs:integer"/>
+        <xs:attribute name="IndexEvent" type="xs:integer"/>
+        <xs:attribute name="SumPaymentForward" type="xs:integer"/>
+        <xs:attribute name="CountryEventCode" type="xs:string"/>
+        <xs:attribute name="CountryToCode" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="PostalOrderEventsForMailError">
+        <xs:sequence/>
+        <xs:attribute name="ErrorID" type="tns:PostalOrderEventsForMailErrors"/>
+    </xs:complexType>
+
+    <xs:complexType name="PostalOrderEventsForMailInput">
+        <xs:sequence/>
+        <xs:attribute name="Barcode" type="xs:string" use="required"/>
+        <xs:attribute name="Language" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="PostalOrderEventsForMaiOutput">
+        <xs:sequence>
+            <xs:element name="PostalOrderEvent" type="tns:PostalOrderEvent" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PostalOrderEventsForMailFault">
+        <xs:sequence>
+            <xs:element name="PostalOrderEventsForMailError" type="tns:PostalOrderEventsForMailError"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="PostalOrderEventsForMailErrors">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="InvalidLoginOrPassword"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

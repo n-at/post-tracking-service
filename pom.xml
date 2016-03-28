@@ -31,11 +31,6 @@
         </dependency>
 
         <dependency>
-            <groupId>wsdl4j</groupId>
-            <artifactId>wsdl4j</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
@@ -54,16 +49,13 @@
                 <version>0.12.3</version>
                 <executions>
                     <execution>
+                        <phase>generate-sources</phase>
                         <goals><goal>generate</goal></goals>
                     </execution>
                 </executions>
                 <configuration>
                     <schemaLanguage>WSDL</schemaLanguage>
-                    <schemas>
-                        <schema>
-                            <url>https://tracking.russianpost.ru/tracking-web-static/rtm34_wsdl.xml</url>
-                        </schema>
-                    </schemas>
+                    <schemaDirectory>src/main/resources/xsd</schemaDirectory>
                     <generatePackage>ru.russianpost.tracking</generatePackage>
                 </configuration>
             </plugin>

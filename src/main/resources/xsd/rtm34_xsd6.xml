@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://russianpost.org/operationhistory"
+           xmlns:ns4="http://www.russianpost.org/RTM/DataExchangeESPP/Data"
+           xmlns:ns3="http://www.russianpost.org/custom-duty-info/data"
+           xmlns:ns2="http://russianpost.org/operationhistory/data"
+           xmlns:ns1="http://russianpost.org/sms-info/data"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           version="1.0"
+           targetNamespace="http://russianpost.org/operationhistory">
+
+    <xs:import namespace="http://russianpost.org/sms-info/data"
+               schemaLocation="rtm34_xsd4.xml"/>
+
+    <xs:import namespace="http://russianpost.org/operationhistory/data"
+               schemaLocation="rtm34_xsd5.xml"/>
+
+    <xs:import namespace="http://www.russianpost.org/custom-duty-info/data"
+               schemaLocation="rtm34_xsd1.xml"/>
+
+    <xs:import namespace="http://www.russianpost.org/RTM/DataExchangeESPP/Data"
+               schemaLocation="rtm34_xsd2.xml"/>
+
+    <xs:element name="PostalOrderEventsForMail" type="tns:PostalOrderEventsForMail"/>
+
+    <xs:element name="PostalOrderEventsForMailResponse" type="tns:PostalOrderEventsForMailResponse"/>
+
+    <xs:element name="getCustomDutyEventsForMail" type="tns:getCustomDutyEventsForMail"/>
+
+    <xs:element name="getCustomDutyEventsForMailResponse" type="tns:getCustomDutyEventsForMailResponse"/>
+
+    <xs:element name="getLanguages" type="tns:getLanguages"/>
+
+    <xs:element name="getLanguagesResponse" type="tns:getLanguagesResponse"/>
+
+    <xs:element name="getOperationHistory" type="tns:getOperationHistory"/>
+
+    <xs:element name="getOperationHistoryResponse" type="tns:getOperationHistoryResponse"/>
+
+    <xs:element name="getSmsHistory" type="tns:getSmsHistory"/>
+
+    <xs:element name="getSmsHistoryResponse" type="tns:getSmsHistoryResponse"/>
+
+    <xs:complexType name="getSmsHistoryResponse">
+        <xs:sequence>
+            <xs:element ref="ns1:SmsHistoryData" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getLanguagesResponse">
+        <xs:sequence>
+            <xs:element ref="ns2:LanguageData" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getLanguages">
+        <xs:sequence>
+            <xs:element ref="ns2:AuthorizationHeader" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getCustomDutyEventsForMail">
+        <xs:sequence>
+            <xs:element ref="ns2:AuthorizationHeader" minOccurs="0"/>
+            <xs:element ref="ns3:CustomDutyEventsForMailInput" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getOperationHistory">
+        <xs:sequence>
+            <xs:element ref="ns2:OperationHistoryRequest" minOccurs="0"/>
+            <xs:element ref="ns2:AuthorizationHeader" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PostalOrderEventsForMailResponse">
+        <xs:sequence>
+            <xs:element ref="ns4:PostalOrderEventsForMaiOutput" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PostalOrderEventsForMail">
+        <xs:sequence>
+            <xs:element ref="ns2:AuthorizationHeader" minOccurs="0"/>
+            <xs:element ref="ns4:PostalOrderEventsForMailInput" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getCustomDutyEventsForMailResponse">
+        <xs:sequence>
+            <xs:element ref="ns3:CustomDutyEventsForMailOutput" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getOperationHistoryResponse">
+        <xs:sequence>
+            <xs:element ref="ns2:OperationHistoryData" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getSmsHistory">
+        <xs:sequence>
+            <xs:element ref="ns2:AuthorizationHeader" minOccurs="0"/>
+            <xs:element ref="ns1:SmsHistoryRequest" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

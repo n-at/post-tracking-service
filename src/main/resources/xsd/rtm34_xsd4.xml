@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://russianpost.org/sms-info/data"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           version="1.0"
+           targetNamespace="http://russianpost.org/sms-info/data">
+
+    <xs:element name="AuthorisationFaultReason" type="xs:string"/>
+
+    <!--<xs:element name="LanguageData">-->
+        <!--<xs:complexType>-->
+            <!--<xs:sequence>-->
+                <!--<xs:element name="Language" maxOccurs="unbounded">-->
+                    <!--<xs:complexType>-->
+                        <!--<xs:sequence/>-->
+                        <!--<xs:attribute name="name" type="xs:string"/>-->
+                        <!--<xs:attribute name="code" type="xs:string"/>-->
+                    <!--</xs:complexType>-->
+                <!--</xs:element>-->
+            <!--</xs:sequence>-->
+        <!--</xs:complexType>-->
+    <!--</xs:element>-->
+
+    <!--<xs:element name="LanguageFaultReason" type="xs:string"/>-->
+
+    <xs:element name="SmsHistoryData">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="historyRecord" type="tns:SmsHistoryRecord" nillable="true" minOccurs="0"
+                            maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SmsHistoryFaultReason" type="xs:string"/>
+
+    <xs:element name="SmsHistoryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Barcode" type="xs:string"/>
+                <xs:element name="Language" type="xs:string" default="RUS" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="SmsHistoryRecord">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:integer"/>
+            <xs:element name="Number" type="xs:string"/>
+            <xs:element name="NotificationTypeID" type="xs:integer"/>
+            <xs:element name="NotificationTypeName" type="xs:string"/>
+            <xs:element name="NotificationStatusID" type="xs:integer"/>
+            <xs:element name="NotificationStatusName" type="xs:string"/>
+            <xs:element name="NotificationStatusDate" type="xs:dateTime"/>
+            <xs:element name="SendedID" type="xs:integer"/>
+            <xs:element name="SourceOperation" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

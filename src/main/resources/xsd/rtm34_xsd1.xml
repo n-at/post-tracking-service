@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://www.russianpost.org/custom-duty-info/data"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           version="1.0"
+           targetNamespace="http://www.russianpost.org/custom-duty-info/data">
+
+    <xs:element name="CustomDutyEvent" type="tns:CustomDutyEvent"/>
+
+    <xs:element name="CustomDutyEventsForMailFault" type="tns:CustomDutyEventsForMailFault"/>
+
+    <xs:element name="CustomDutyEventsForMailInput" type="tns:CustomDutyEventsForMailInput"/>
+
+    <xs:element name="CustomDutyEventsForMailOutput" type="tns:CustomDutyEventsForMailOutput"/>
+
+    <xs:complexType name="CustomDutyEventsForMailInput">
+        <xs:sequence/>
+        <xs:attribute name="Barcode" type="xs:string" use="required"/>
+        <xs:attribute name="Language" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="CustomDutyEventsForMailOutput">
+        <xs:sequence>
+            <xs:element name="CustomDutyEvent" type="tns:CustomDutyEvent" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CustomDutyEvent">
+        <xs:sequence/>
+        <xs:attribute name="Number" type="xs:string" use="required"/>
+        <xs:attribute name="EventDateTime" type="xs:dateTime"/>
+        <xs:attribute name="EventType" type="xs:integer" use="required"/>
+        <xs:attribute name="EventName" type="xs:string"/>
+        <xs:attribute name="IndexTo" type="xs:string"/>
+        <xs:attribute name="IndexEvent" type="xs:string"/>
+        <xs:attribute name="CountryEventCode" type="xs:string"/>
+        <xs:attribute name="CountryToCode" type="xs:string"/>
+        <xs:attribute name="SumPaymentForward" type="xs:integer" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="CustomDutyEventsForMailFault">
+        <xs:sequence/>
+        <xs:attribute name="ErrorID" type="tns:CustomDutyEventsForMailErrors"/>
+    </xs:complexType>
+
+    <xs:simpleType name="CustomDutyEventsForMailErrors">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BarcodeIsNull"/>
+            <xs:enumeration value="InternalServiceError"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
