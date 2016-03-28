@@ -33,9 +33,24 @@
 
     <xs:element name="getLanguagesResponse" type="tns:getLanguagesResponse"/>
 
-    <xs:element name="getOperationHistory" type="tns:getOperationHistory"/>
+    <!-- For JAXB2 -->
+    <xs:element name="getOperationHistory">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns2:OperationHistoryRequest" minOccurs="0"/>
+                <xs:element ref="ns2:AuthorizationHeader" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
-    <xs:element name="getOperationHistoryResponse" type="tns:getOperationHistoryResponse"/>
+    <!-- For JAXB2 -->
+    <xs:element name="getOperationHistoryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ns2:OperationHistoryData" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="getSmsHistory" type="tns:getSmsHistory"/>
 
@@ -66,13 +81,6 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="getOperationHistory">
-        <xs:sequence>
-            <xs:element ref="ns2:OperationHistoryRequest" minOccurs="0"/>
-            <xs:element ref="ns2:AuthorizationHeader" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
     <xs:complexType name="PostalOrderEventsForMailResponse">
         <xs:sequence>
             <xs:element ref="ns4:PostalOrderEventsForMaiOutput" minOccurs="0"/>
@@ -89,12 +97,6 @@
     <xs:complexType name="getCustomDutyEventsForMailResponse">
         <xs:sequence>
             <xs:element ref="ns3:CustomDutyEventsForMailOutput" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="getOperationHistoryResponse">
-        <xs:sequence>
-            <xs:element ref="ns2:OperationHistoryData" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
