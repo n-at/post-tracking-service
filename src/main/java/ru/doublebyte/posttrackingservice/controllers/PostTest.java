@@ -9,6 +9,7 @@ import ru.doublebyte.posttrackingservice.response.TrackError;
 import ru.doublebyte.posttrackingservice.response.TrackResult;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,9 +35,9 @@ public class PostTest {
 
     private Track getNormalTrackResult(String trackId) {
         List<Operation> operations = new ArrayList<>();
-        operations.add(new Operation(0, "Test operation 1", "123456 City 1"));
-        operations.add(new Operation(1000, "Test operation 2", "123456 City 2"));
-        operations.add(new Operation(2000, "Test operation 3", "987654 City 3"));
+        operations.add(new Operation(new Date().getTime() - 5 * 24 * 60 * 60 * 1000, "Test operation 1", "123456 City 1"));
+        operations.add(new Operation(new Date().getTime() - 3 * 24 * 60 * 60 * 1000, "Test operation 2", "123456 City 2"));
+        operations.add(new Operation(new Date().getTime(), "Test operation 3", "987654 City 3"));
         return new TrackResult(trackId, operations);
     }
 
