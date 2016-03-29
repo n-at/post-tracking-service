@@ -8,17 +8,27 @@ public class Operation implements Comparable<Operation> {
     /**
      * Operation localized name
      */
-    private String name;
+    private String name = "";
 
     /**
      * Operation date timestamp
      */
-    private long date;
+    private long date = 0;
 
     /**
      * Address of operation place
      */
-    private String address;
+    private String address = "";
+
+    public Operation() {
+
+    }
+
+    public Operation(long date, String name, String address) {
+        this.date = date;
+        this.name = name;
+        this.address = address;
+    }
 
     @Override
     public int compareTo(Operation o) {

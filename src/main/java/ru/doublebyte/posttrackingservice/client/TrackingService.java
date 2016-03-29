@@ -50,7 +50,7 @@ public class TrackingService {
         try {
             response = (GetOperationHistoryResponse)webServiceTemplate.marshalSendAndReceive(request);
         } catch(Exception e) {
-            logger.error("Request error", e);
+            logger.error("Post API request error", e);
             return new TrackError(e.getMessage(), trackId);
         }
 
