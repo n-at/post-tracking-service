@@ -59,10 +59,18 @@ public class ClientConfiguration {
     }
 
     @Bean
+    public TrackOperationHistory trackOperationHistory() {
+        return new TrackOperationHistory();
+    }
+
+    @Bean
     public TrackingService trackingService() {
         TrackingService trackingService = new TrackingService();
+
         trackingService.setWebServiceTemplate(webServiceTemplate());
         trackingService.setTrackId(trackId());
+        trackingService.setTrackOperationHistory(trackOperationHistory());
+
         trackingService.setServiceLogin(serviceLogin);
         trackingService.setServicePassword(servicePassword);
         return trackingService;

@@ -3,9 +3,10 @@ package ru.doublebyte.posttrackingservice.client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ws.client.core.WebServiceTemplate;
+import ru.doublebyte.posttrackingservice.response.Track;
+import ru.doublebyte.posttrackingservice.response.TrackError;
+import ru.doublebyte.posttrackingservice.response.TrackResult;
 import ru.russianpost.tracking.*;
-
-import java.util.List;
 
 public class TrackingService {
 
@@ -13,6 +14,7 @@ public class TrackingService {
 
     private WebServiceTemplate webServiceTemplate;
     private TrackId trackId;
+    private TrackOperationHistory trackOperationHistory;
     private String serviceLogin = "";
     private String servicePassword = "";
 
@@ -21,9 +23,9 @@ public class TrackingService {
      * @param trackId Post track id
      * @return Tracking history response
      */
-    public String getOperationHistory(String trackId) {
+    public Track getOperationHistory(String trackId) {
         if(!this.trackId.isValid(trackId)) {
-            return "Invalid trackId"; //TODO
+            new TrackError("Invalid track id", trackId);
         }
 
         OperationHistoryRequest operationHistoryRequest = new OperationHistoryRequest();
@@ -48,13 +50,12 @@ public class TrackingService {
             response = (GetOperationHistoryResponse)webServiceTemplate.marshalSendAndReceive(request);
         } catch(Exception e) {
             logger.error("Request error", e);
-            return "Not ok!"; //TODO send error
+            return new TrackError(e.getMessage(), trackId);
         }
 
         OperationHistoryData operationHistory = response.getOperationHistoryData();
-        List<OperationHistoryRecord> records = operationHistory.getHistoryRecord();
 
-        return "Ok"; //TODO send result
+        return new TrackResult(trackId, trackOperationHistory.makeOperationList(operationHistory));
     }
 
     public void setWebServiceTemplate(WebServiceTemplate webServiceTemplate) {
@@ -63,6 +64,10 @@ public class TrackingService {
 
     public void setTrackId(TrackId trackId) {
         this.trackId = trackId;
+    }
+
+    public void setTrackOperationHistory(TrackOperationHistory trackOperationHistory) {
+        this.trackOperationHistory = trackOperationHistory;
     }
 
     public void setServiceLogin(String serviceLogin) {
