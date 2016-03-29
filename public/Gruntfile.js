@@ -1,24 +1,14 @@
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browserify');
-
-    var browserifyFiles = {
-        'build/index.js': 'index.js'
-    };
-    var uglifyFiles = {
-        'build/index.min.js': 'build/index.js'
-    };
 
     grunt.initConfig({
         browserify: {
             main: {
-                files: browserifyFiles
-            },
-            watch: {
-                files: browserifyFiles,
-                options: {
-                    watch: true,
-                    keepAlive: true
+                files: {
+                    'build/index.js': 'js/index.js'
                 }
             },
             options: {
@@ -27,13 +17,37 @@ module.exports = function(grunt) {
                 ]
             }
         },
+
         uglify: {
             main: {
-                files: uglifyFiles
+                files: {
+                    'build/index.min.js': 'build/index.js'
+                }
+            }
+        },
+
+        less: {
+            main: {
+                files: {
+                    'build/index.css': 'less/index.less'
+                }
+            },
+            options: {
+                compress: true
+            }
+        },
+
+        watch: {
+            scripts: {
+                files: 'js/**/*.js',
+                tasks: ['browserify:main']
+            },
+            styles: {
+                files: 'less/**/*.less',
+                tasks: ['less:main']
             }
         }
     });
 
-    grunt.registerTask('default', ['browserify:main', 'uglify:main']);
-    grunt.registerTask('watch', ['browserify:watch']);
+    grunt.registerTask('default', ['browserify:main', 'uglify:main', 'less:main']);
 };
