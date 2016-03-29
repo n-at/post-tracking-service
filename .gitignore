@@ -3,3 +3,6 @@ target/
 *.iml
 
 application.properties
+public/node_modules/
+public/bower_components/
+public/build/

@@ -1,0 +1,15 @@
+{
+  "name": "post-traking-service-public",
+  "description": "post-tracking-service public resources",
+  "main": "index.js",
+  "authors": [
+    "Alexey Nurgaliev <atnurgaliev@gmail.com>"
+  ],
+  "license": "BSD-3-Clause",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}

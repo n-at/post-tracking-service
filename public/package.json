@@ -1,0 +1,21 @@
+{
+  "name": "post-traking-service-public",
+  "version": "1.0.0",
+  "description": "post-tracking-service public resources",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/n-at/post-tracking-service.git"
+  },
+  "author": "Alexey Nurgaliev <atnurgaliev@gmail.com>",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "babel-preset-react": "6.*",
+    "babelify": "7.*",
+    "grunt": "0.4.*",
+    "grunt-browserify": "5.*",
+    "grunt-contrib-uglify": "1.*",
+    "jquery": "^2.2.2",
+    "react": "0.14.*",
+    "react-dom": "0.14.*"
+  }
+}
