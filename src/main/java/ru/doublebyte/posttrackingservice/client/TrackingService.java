@@ -12,10 +12,20 @@ public class TrackingService {
     private static final Logger logger = LoggerFactory.getLogger(TrackingService.class);
 
     private WebServiceTemplate webServiceTemplate;
+    private TrackId trackId;
     private String serviceLogin = "";
     private String servicePassword = "";
 
+    /**
+     * Get tracking history by post track id
+     * @param trackId Post track id
+     * @return Tracking history response
+     */
     public String getOperationHistory(String trackId) {
+        if(!this.trackId.isValid(trackId)) {
+            return "Invalid trackId"; //TODO
+        }
+
         OperationHistoryRequest operationHistoryRequest = new OperationHistoryRequest();
         operationHistoryRequest.setBarcode(trackId);
         operationHistoryRequest.setLanguage("RUS");
@@ -49,6 +59,10 @@ public class TrackingService {
 
     public void setWebServiceTemplate(WebServiceTemplate webServiceTemplate) {
         this.webServiceTemplate = webServiceTemplate;
+    }
+
+    public void setTrackId(TrackId trackId) {
+        this.trackId = trackId;
     }
 
     public void setServiceLogin(String serviceLogin) {
