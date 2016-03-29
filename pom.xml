@@ -44,6 +44,7 @@
             </plugin>
 
             <plugin>
+                <!-- Generate classes by XML schema -->
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
                 <version>0.12.3</version>
@@ -58,6 +59,31 @@
                     <schemaDirectory>src/main/resources/xsd</schemaDirectory>
                     <generatePackage>ru.russianpost.tracking</generatePackage>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <!-- Copy web resources into build directory -->
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-public</id>
+                        <phase>prepare-package</phase>
+                        <goals><goal>copy-resources</goal></goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <targetPath>${project.build.outputDirectory}/public</targetPath>
+                                    <directory>${basedir}/public</directory>
+                                    <includes>
+                                        <include>index.html</include>
+                                        <include>build/**/*</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
