@@ -18,13 +18,16 @@ public class ClientConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(ClientConfiguration.class);
 
     @Value("${post.serviceUri}")
-    public String serviceUri;
+    private String serviceUri;
 
     @Value("${post.serviceLogin}")
-    public String serviceLogin;
+    private String serviceLogin;
 
     @Value("${post.servicePassword}")
-    public String servicePassword;
+    private String servicePassword;
+
+    @Value("${post.serviceLanguage}")
+    private String serviceLanguage;
 
     @Bean
     public Jaxb2Marshaller marshaller() {
@@ -73,6 +76,8 @@ public class ClientConfiguration {
 
         trackingService.setServiceLogin(serviceLogin);
         trackingService.setServicePassword(servicePassword);
+        trackingService.setServiceLanguage(serviceLanguage);
+
         return trackingService;
     }
 

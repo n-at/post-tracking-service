@@ -15,6 +15,7 @@ public class TrackingService {
     private WebServiceTemplate webServiceTemplate;
     private TrackId trackId;
     private TrackOperationHistory trackOperationHistory;
+    private String serviceLanguage = "RUS";
     private String serviceLogin = "";
     private String servicePassword = "";
 
@@ -30,7 +31,7 @@ public class TrackingService {
 
         OperationHistoryRequest operationHistoryRequest = new OperationHistoryRequest();
         operationHistoryRequest.setBarcode(trackId);
-        operationHistoryRequest.setLanguage("RUS");
+        operationHistoryRequest.setLanguage(serviceLanguage);
         operationHistoryRequest.setMessageType(0);
 
         AuthorizationHeader authorizationHeader = new AuthorizationHeader();
@@ -68,6 +69,10 @@ public class TrackingService {
 
     public void setTrackOperationHistory(TrackOperationHistory trackOperationHistory) {
         this.trackOperationHistory = trackOperationHistory;
+    }
+
+    public void setServiceLanguage(String serviceLanguage) {
+        this.serviceLanguage = serviceLanguage;
     }
 
     public void setServiceLogin(String serviceLogin) {
