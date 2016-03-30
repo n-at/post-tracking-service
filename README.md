@@ -1,6 +1,22 @@
 Using of Russian Post tracking API
 ==================================
 
+Stack
+-----
+
+*Back-end:*
+
+* Java 8
+* [Spring Boot](http://projects.spring.io/spring-boot/)
+* [Spring Web Services](http://projects.spring.io/spring-ws/)
+
+*Front-end:*
+
+* [React](http://facebook.github.io/react/)
+* [jQuery](http://jquery.com/)
+* [Bootstrap 3](http://getbootstrap.com/)
+* [LESS](http://lesscss.org/)
+
 Building
 --------
 
