@@ -26,7 +26,7 @@ public class TrackingService {
      */
     public Track getOperationHistory(String trackId) {
         if(!this.trackId.isValid(trackId)) {
-            new TrackError("Invalid track id", trackId);
+            return new TrackError("Invalid track id", trackId);
         }
 
         OperationHistoryRequest operationHistoryRequest = new OperationHistoryRequest();

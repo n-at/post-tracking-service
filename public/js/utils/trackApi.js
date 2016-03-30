@@ -1,6 +1,6 @@
 var $ = require('jquery');
 
-var apiUrl = '/post-test/';
+var apiUrl = '/post/';
 
 module.exports.trackItem = function(trackId, callback) {
     $.ajax({
