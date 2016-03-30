@@ -1,18 +1,22 @@
 var React = require('react');
 
-//TODO
-
 module.exports = React.createClass({
     getDefaultProps: function() {
         return {
-            message: 'Unknown error'
+            error: {}
         };
     },
 
     render: function() {
         return (
             <div className="error-message">
-                {this.props.message}
+                <div className="alert alert-danger">
+                    <p className="lead">
+                        Service error
+                    </p>
+
+                    <p>{this.props.error.message}</p>
+                </div>
             </div>
         );
     }

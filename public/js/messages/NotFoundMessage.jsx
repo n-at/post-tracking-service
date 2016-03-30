@@ -1,12 +1,14 @@
 var React = require('react');
 
-//TODO
-
 module.exports = React.createClass({
     render: function() {
         return (
             <div className="not-found-message">
-                Not found!
+                <div className="alert alert-info">
+                    <p className="lead">
+                        No information about this Track ID found.
+                    </p>
+                </div>
             </div>
         );
     }
