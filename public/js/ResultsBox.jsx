@@ -82,6 +82,6 @@ module.exports = React.createClass({
             return (<NotFoundMessage trackId={trackId} />);
         }
 
-        return (<ResultsList data={trackHistory} />);
+        return (<ResultsList trackId={trackId} data={trackHistory} />);
     }
 });

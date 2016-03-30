@@ -17,6 +17,7 @@
     "grunt-contrib-uglify": "1.*",
     "grunt-contrib-watch": "1.*",
     "jquery": "2.*",
+    "lodash": "^4.6.1",
     "react": "0.14.*",
     "react-dom": "0.14.*"
   }
