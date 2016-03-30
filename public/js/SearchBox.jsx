@@ -41,8 +41,10 @@ module.exports = React.createClass({
     handleTrackIdSubmit: function(e) {
         e.preventDefault();
 
-        if(this.state.trackId) {
-            this.props.ontrackid(this.state.trackId);
+        var trackId = this.state.trackId.trim();
+
+        if(trackId) {
+            this.props.ontrackid(trackId);
         }
     },
 

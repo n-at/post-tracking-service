@@ -36,6 +36,11 @@ module.exports = React.createClass({
 
         if(me.props.trackId == newProps.trackId) return;
 
+        me.setState({
+            trackHistory: null,
+            trackError: null
+        });
+
         var trackId = newProps.trackId;
         if(!trackId) {
             return;

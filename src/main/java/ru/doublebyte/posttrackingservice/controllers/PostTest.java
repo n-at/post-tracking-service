@@ -21,6 +21,10 @@ public class PostTest {
 
     @RequestMapping("/{trackId}")
     public Track post(@PathVariable String trackId) {
+        try {
+            Thread.sleep(2000);
+        } catch(Exception ignored) {}
+
         switch(trackId) {
             case "TRACK0":
                 return getNormalTrackResult(trackId);
