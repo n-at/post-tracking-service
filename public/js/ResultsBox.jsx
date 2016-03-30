@@ -78,7 +78,7 @@ module.exports = React.createClass({
             return (<LoadingMessage/>);
         }
 
-        if(this.state.trackHistory.length = 0) {
+        if(trackHistory.length == 0) {
             return (<NotFoundMessage trackId={trackId} />);
         }
 
