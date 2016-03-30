@@ -57,6 +57,7 @@ module.exports = React.createClass({
                             <input type="text"
                                    className="form-control"
                                    placeholder="Track ID"
+                                   autoFocus={true}
                                    onChange={this.handleTrackIdChange} />
                         </div>
                         <div className="col-xs-2">
