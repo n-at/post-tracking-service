@@ -12,6 +12,7 @@
     <properties>
         <java.version>1.8</java.version>
         <project.encoding>UTF-8</project.encoding>
+        <web.resources>${basedir}/public</web.resources>
     </properties>
 
     <parent>
@@ -29,7 +30,6 @@
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-core</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -66,7 +66,6 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>copy-public</id>
                         <phase>prepare-package</phase>
                         <goals><goal>copy-resources</goal></goals>
                         <configuration>
@@ -74,7 +73,7 @@
                             <resources>
                                 <resource>
                                     <targetPath>${project.build.outputDirectory}/public</targetPath>
-                                    <directory>${basedir}/public</directory>
+                                    <directory>${web.resources}</directory>
                                     <includes>
                                         <include>index.html</include>
                                         <include>build/**/*</include>
@@ -85,6 +84,50 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <!-- Handle web resources -->
+                <!-- Install dependencies by npm and bower -->
+                <!-- Build by Grunt -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>npm-install</id>
+                        <phase>generate-resources</phase>
+                        <goals><goal>exec</goal></goals>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
+                            <workingDirectory>${web.resources}</workingDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>bower-install</id>
+                        <phase>generate-resources</phase>
+                        <goals><goal>exec</goal></goals>
+                        <configuration>
+                            <executable>bower</executable>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
+                            <workingDirectory>${web.resources}</workingDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>grunt-build</id>
+                        <phase>generate-resources</phase>
+                        <goals><goal>exec</goal></goals>
+                        <configuration>
+                            <executable>grunt</executable>
+                            <workingDirectory>${web.resources}</workingDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
