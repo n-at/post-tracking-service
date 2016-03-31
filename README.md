@@ -28,16 +28,16 @@ Requirements:
 * [Bower](http://bower.io) `npm install -g bower`
 * [Grunt](https://www.npmjs.com/package/grunt-cli) `npm install -g grunt-cli`
 
-Build client resources:
+Build client resources and executable jar:
+
+    $ mvn clean package
+
+Build only client resources:
 
     $ cd public
     $ npm install
     $ bower install
     $ grunt
-
-Build executable jar:
-
-    $ mvn clean package
 
 Running
 -------
