@@ -42,7 +42,7 @@ Build only client resources:
 Running
 -------
 
-Setup API login and password in `application.properties` file.
+Setup API login and password in `application.properties` file (you can get them [here](https://tracking.pochta.ru/)).
 See `application.sample.properties` for example of application configuration.
 
 Run application (from `target` directory):
