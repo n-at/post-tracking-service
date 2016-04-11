@@ -2,6 +2,7 @@ Using of Russian Post tracking API
 ==================================
 
 [![Build Status](https://travis-ci.org/n-at/post-tracking-service.svg?branch=master)](https://travis-ci.org/n-at/post-tracking-service)
+[![Dependencies](https://app.updateimpact.com/badge/719621723833634816/post-tracking-service.svg?config=test)](https://app.updateimpact.com/latest/719621723833634816/post-tracking-service)
 
 Stack
 -----
