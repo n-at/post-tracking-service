@@ -1,10 +1,10 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var $ = require('jquery');
+import React from 'react'
+import ReactDOM from 'react-dom'
+import $ from 'jquery'
 
-var App = require('./App.jsx');
+import App from './App'
 
 $(function() {
-    var container = document.getElementById('content');
+    let container = document.getElementById('content');
     ReactDOM.render(<App/>, container);
 });

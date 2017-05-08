@@ -1,30 +1,31 @@
-var React = require('react');
+import React from 'react'
 
-var SearchBox = require('./SearchBox.jsx');
-var ResultsBox = require('./ResultsBox.jsx');
+import SearchBox from './SearchBox'
+import ResultsBox from './ResultsBox'
 
-module.exports = React.createClass({
+export default class App extends React.Component {
 
-    getInitialState: function() {
-        return {
-            trackId: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            trackId: '',
         };
-    },
+    }
 
     /**
      * Track id callback fro SearchBox
      * @param trackId
      */
-    handleTrackId: function(trackId) {
+    handleTrackId(trackId) {
         this.setState({trackId: trackId});
-    },
+    }
 
-    render: function() {
+    render() {
         return (
             <div className="application">
-                <SearchBox ontrackid={this.handleTrackId} />
+                <SearchBox ontrackid={this.handleTrackId.bind(this)} />
                 <ResultsBox trackId={this.state.trackId} />
             </div>
         );
     }
-});
+}

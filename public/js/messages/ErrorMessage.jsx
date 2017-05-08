@@ -1,13 +1,7 @@
-var React = require('react');
+import React from 'react'
 
-module.exports = React.createClass({
-    getDefaultProps: function() {
-        return {
-            error: {}
-        };
-    },
-
-    render: function() {
+export default class ErrorMessage extends React.Component {
+    render() {
         return (
             <div className="error-message">
                 <div className="alert alert-danger">
@@ -20,4 +14,8 @@ module.exports = React.createClass({
             </div>
         );
     }
-});
+}
+
+ErrorMessage.defaultProps = {
+    error: {},
+};

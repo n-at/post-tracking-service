@@ -1,47 +1,39 @@
-var React = require('react');
+import React from 'react'
 
-var LoadingMessage = require('./messages/LoadingMessage.jsx');
-var ErrorMessage = require('./messages/ErrorMessage.jsx');
-var NotFoundMessage = require('./messages/NotFoundMessage.jsx');
-var InitialMessage = require('./messages/InitialMessage.jsx');
-var ResultsList = require('./ResultsList.jsx');
+import LoadingMessage from './messages/LoadingMessage'
+import ErrorMessage from './messages/ErrorMessage'
+import NotFoundMessage from './messages/NotFoundMessage'
+import InitialMessage from './messages/InitialMessage'
+import ResultsList from './ResultsList'
 
-var trackApi = require('./utils/trackApi');
+import trackApi from './utils/trackApi'
 
-module.exports = React.createClass({
+export default class ResultsBox extends React.Component {
 
-    getDefaultProps: function() {
-        return {
-            trackId: ''
-        };
-    },
+    constructor(props) {
+        super(props);
 
-    /**
-     * Set empty track history and error by default
-     *
-     * @returns {{trackHistory: null, trackError: null}}
-     */
-    getInitialState: function() {
-        return {
+        //Set empty track history and error by default
+        this.state = {
             trackHistory: null,
-            trackError: null
+            trackError: null,
         };
-    },
+    }
 
     /**
      * Call track API on properties update
      */
-    componentWillReceiveProps: function(newProps) {
-        var me = this;
+    componentWillReceiveProps(newProps) {
+        let me = this;
 
-        if(me.props.trackId == newProps.trackId) return;
+        if(me.props.trackId === newProps.trackId) return;
 
         me.setState({
             trackHistory: null,
             trackError: null
         });
 
-        var trackId = newProps.trackId;
+        let trackId = newProps.trackId;
         if(!trackId) {
             return;
         }
@@ -59,12 +51,12 @@ module.exports = React.createClass({
                 });
             }
         });
-    },
+    }
 
-    render: function() {
-        var trackId = this.props.trackId;
-        var trackError = this.state.trackError;
-        var trackHistory = this.state.trackHistory;
+    render() {
+        let trackId = this.props.trackId;
+        let trackError = this.state.trackError;
+        let trackHistory = this.state.trackHistory;
 
         if(trackError !== null) {
             return (<ErrorMessage error={trackError}/>);
@@ -78,10 +70,14 @@ module.exports = React.createClass({
             return (<LoadingMessage/>);
         }
 
-        if(trackHistory.length == 0) {
+        if(trackHistory.length === 0) {
             return (<NotFoundMessage trackId={trackId} />);
         }
 
         return (<ResultsList trackId={trackId} data={trackHistory} />);
     }
-});
+}
+
+ResultsBox.defaultProps = {
+    trackId: '',
+};

@@ -1,64 +1,51 @@
-var React = require('react');
+import React from 'react'
 
 /**
  * A form for Track ID input
  */
+export default class SearchBox extends React.Component {
 
-module.exports = React.createClass({
-    /**
-     * Set default callback
-     * @returns {{ontrackid: ontrackid}}
-     */
-    getDefaultProps: function() {
-        return {
-            ontrackid: function(){}
+    constructor(props) {
+        super(props);
+        this.state = {
+            trackId: '',
         };
-    },
-
-    /**
-     * Set empty initial track id
-     * @returns {{trackId: string}}
-     */
-    getInitialState: function() {
-        return {
-            trackId: ''
-        };
-    },
+    }
 
     /**
      * Process change of track id in form
      * @param e
      */
-    handleTrackIdChange: function(e) {
+    handleTrackIdChange(e) {
         this.setState({trackId: e.target.value});
-    },
+    }
 
     /**
      * Process track form submit event
      * Call ontrackid callback
      * @param e
      */
-    handleTrackIdSubmit: function(e) {
+    handleTrackIdSubmit(e) {
         e.preventDefault();
 
-        var trackId = this.state.trackId.trim();
+        let trackId = this.state.trackId.trim();
 
         if(trackId) {
             this.props.ontrackid(trackId);
         }
-    },
+    }
 
-    render: function() {
+    render() {
         return (
             <div className="search-box">
-                <form onSubmit={this.handleTrackIdSubmit}>
+                <form onSubmit={this.handleTrackIdSubmit.bind(this)}>
                     <div className="row">
                         <div className="col-xs-10">
                             <input type="text"
                                    className="form-control"
                                    placeholder="Track ID"
                                    autoFocus={true}
-                                   onChange={this.handleTrackIdChange} />
+                                   onChange={this.handleTrackIdChange.bind(this)} />
                         </div>
                         <div className="col-xs-2">
                             <button type="submit"
@@ -71,4 +58,8 @@ module.exports = React.createClass({
             </div>
         );
     }    
-});
+}
+
+SearchBox.defaultProps = {
+    ontrackid: () => {},
+};

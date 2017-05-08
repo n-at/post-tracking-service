@@ -1,37 +1,39 @@
-var $ = require('jquery');
+import $ from 'jquery'
 
-var apiUrl = '/post/';
+const apiUrl = '/post/';
 
-module.exports.trackItem = function(trackId, callback) {
-    $.ajax({
-        method: 'GET',
+export default {
+    trackItem: function(trackId, callback) {
+        $.ajax({
+            method: 'GET',
 
-        url: apiUrl + trackId,
+            url: apiUrl + trackId,
 
-        success: function(data) {
-            if(data.success) {
-                var operations = data.operations ? data.operations : [];
-                callback(null, operations);
-            } else {
-                var error = {
-                    success: false,
-                    message: 'Internal error'
-                };
+            success: function(data) {
+                if(data.success) {
+                    let operations = data.operations ? data.operations : [];
+                    callback(null, operations);
+                } else {
+                    let error = {
+                        success: false,
+                        message: 'Internal error'
+                    };
 
-                if(data.message) {
-                    error.message = data.message;
+                    if(data.message) {
+                        error.message = data.message;
+                    }
+
+                    callback(error);
                 }
+            },
 
+            error: function() {
+                let error = {
+                    success: false,
+                    message: 'Service error'
+                };
                 callback(error);
             }
-        },
-
-        error: function() {
-            var error = {
-                success: false,
-                message: 'Service error'
-            };
-            callback(error);
-        }
-    });
+        });
+    }
 };

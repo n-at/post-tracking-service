@@ -1,19 +1,11 @@
-var React = require('react');
-var _ = require('lodash');
+import React from 'react'
+import _ from 'lodash'
 
-var ResultItem = require('./ResultItem.jsx');
+import ResultItem from './ResultItem'
 
-module.exports = React.createClass({
-
-    getDefaultProps: function() {
-        return {
-            trackId: '',
-            data: []
-        };
-    },
-
-    render: function() {
-        var items = _.map(_.reverse(this.props.data), function(operation) {
+export default class ResultsList extends React.Component {
+    render() {
+        let items = _.map(_.reverse(this.props.data), function(operation) {
             return (
                 <ResultItem key={operation.date} item={operation}/>
             );
@@ -29,4 +21,9 @@ module.exports = React.createClass({
             </div>
         );
     }
-});
+}
+
+ResultsList.defaultProps = {
+    trackId: '',
+    data: [],
+};

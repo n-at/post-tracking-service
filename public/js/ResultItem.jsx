@@ -1,14 +1,10 @@
-var React = require('react');
+import React from 'react'
 
-module.exports = React.createClass({
-    getDefaultProps: function() {
-        return {item: {}};
-    },
-
-    render: function() {
-        var item = this.props.item;
-        var date = new Date(item.date);
-        var localizedDate = date.toLocaleString();
+export default class ResultItem extends React.Component {
+    render() {
+        let item = this.props.item;
+        let date = new Date(item.date);
+        let localizedDate = date.toLocaleString();
 
         return (
             <li className="result-item list-group-item">
@@ -20,4 +16,8 @@ module.exports = React.createClass({
             </li>
         )
     }
-});
+}
+
+ResultItem.defaultProps = {
+    item: {}
+};

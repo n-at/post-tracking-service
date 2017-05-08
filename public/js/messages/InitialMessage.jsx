@@ -1,7 +1,7 @@
-var React = require('react');
+import React from 'react'
 
-module.exports = React.createClass({
-    render: function() {
+export default class InitialMessage extends React.Component {
+    render() {
         return (
             <div className="initial-message">
                 <div className="alert alert-info">
@@ -12,4 +12,4 @@ module.exports = React.createClass({
             </div>
         );
     }    
-});
+}

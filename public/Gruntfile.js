@@ -66,11 +66,15 @@ module.exports = function(grunt) {
         browserify: {
             development: {
                 files: browserifyFiles,
-                options: browserifyDevelopmentOptions
+                options: {
+                    browserifyOptions: browserifyDevelopmentOptions
+                }
             },
             production: {
                 files: browserifyFiles,
-                options: browserifyProductionOptions
+                options: {
+                    browserifyOptions: browserifyProductionOptions
+                }
             },
             options: {
                 transform: [
