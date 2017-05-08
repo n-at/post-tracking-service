@@ -8,17 +8,24 @@
   },
   "author": "Alexey Nurgaliev <atnurgaliev@gmail.com>",
   "license": "BSD-3-Clause",
-  "devDependencies": {
-    "babel-preset-react": "6.*",
-    "babelify": "7.*",
-    "grunt": "0.4.*",
-    "grunt-browserify": "5.*",
-    "grunt-contrib-less": "1.*",
-    "grunt-contrib-uglify": "1.*",
-    "grunt-contrib-watch": "1.*",
+  "scripts": {
+    "build": "grunt",
+    "watch": "grunt watch"
+  },
+  "dependencies": {
+    "bootstrap": "3.*",
     "jquery": "2.*",
     "lodash": "4.*",
     "react": "15.*",
     "react-dom": "15.*"
+  },
+  "devDependencies": {
+    "babel-preset-react": "6.*",
+    "babelify": "7.*",
+    "grunt": "1.*",
+    "grunt-browserify": "5.*",
+    "grunt-contrib-less": "1.*",
+    "grunt-contrib-uglify": "1.*",
+    "grunt-contrib-watch": "1.*"
   }
 }

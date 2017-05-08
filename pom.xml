@@ -81,7 +81,7 @@
                                     <includes>
                                         <include>index.html</include>
                                         <include>build/**/*</include>
-                                        <include>bower_components/**/*</include>
+                                        <include>node_modules/bootstrap/**/*</include>
                                     </includes>
                                 </resource>
                             </resources>
@@ -92,8 +92,7 @@
 
             <plugin>
                 <!-- Handle web resources -->
-                <!-- Install dependencies by npm and bower -->
-                <!-- Build by Grunt -->
+                <!-- Install dependencies and build by npm -->
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <executions>
@@ -110,24 +109,15 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>bower-install</id>
+                        <id>npm-grunt-build</id>
                         <phase>generate-resources</phase>
                         <goals><goal>exec</goal></goals>
                         <configuration>
-                            <executable>bower</executable>
+                            <executable>npm</executable>
                             <arguments>
-                                <argument>install</argument>
-                                <argument>--allow-root</argument>
+                                <argument>run</argument>
+                                <argument>build</argument>
                             </arguments>
-                            <workingDirectory>${web.resources}</workingDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>grunt-build</id>
-                        <phase>generate-resources</phase>
-                        <goals><goal>exec</goal></goals>
-                        <configuration>
-                            <executable>grunt</executable>
                             <workingDirectory>${web.resources}</workingDirectory>
                         </configuration>
                     </execution>
