@@ -12,8 +12,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <version>1.5.5.RELEASE</version>
     </parent>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.encoding>UTF-8</project.encoding>
+        <web.resources>${basedir}/public</web.resources>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -29,12 +35,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <project.encoding>UTF-8</project.encoding>
-        <web.resources>${basedir}/public</web.resources>
-    </properties>
 
     <build>
         <plugins>
