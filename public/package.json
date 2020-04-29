@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "bootstrap": "3.*",
-    "jquery": "2.*",
+    "jquery": "3.*",
     "lodash": "4.*",
     "react": "15.*",
     "react-dom": "15.*"
